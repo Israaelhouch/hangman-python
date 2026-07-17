@@ -2,7 +2,7 @@
 
 A beginner-friendly Hangman game, built in two versions: a simple **terminal**
 game (typing) and an **interactive window** game (clicking with the mouse).
-This is the capstone project for a one-to-one Python course.
+
 
 Both versions play the same way — guess the secret word one letter at a time
 before the hangman is fully drawn — and they share the exact same game logic.
