@@ -10,6 +10,10 @@ a **terminal** game you type into, and a **window** game you click.
 
 ## What it is
 
+Hangman, written as a way to put the fundamentals of Python to work in something
+that actually runs — loops, lists, conditionals, functions, string handling and
+`random` doing real work rather than sitting in an exercise.
+
 The terminal version is built from core Python only — variables, lists, loops,
 functions and `random` — and draws the hangman with ASCII art. The window
 version takes that exact guessing logic and puts a mouse and a real drawing on
