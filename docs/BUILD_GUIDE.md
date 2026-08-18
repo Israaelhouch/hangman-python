@@ -1,14 +1,14 @@
-# Hangman — Step-by-Step Build Guide (for the instructor)
+# Hangman — Step-by-Step Build Guide
 
-This guide walks your student through building Hangman a little at a time, so
-he never faces a blank page or a wall of code. Every step is a **complete,
-runnable program** — he types it, runs it, sees it work, then adds the next
-piece. Confidence grows with each run.
+This guide walks through building Hangman a little at a time, so you never face
+a blank page or a wall of code. Every step is a **complete, runnable program** —
+type it, run it, see it work, then add the next piece. Confidence grows with
+each run.
 
 There are two parts:
 
-- **Part A — the terminal game** (4 steps). Build this first. It uses only what
-  he's already learned.
+- **Part A — the terminal game** (4 steps). Build this first. It uses only core
+  Python.
 - **Part B — the clickable window** (optional upgrade). The same game with a
   mouse and drawings, using pygame.
 
@@ -26,7 +26,7 @@ A rough pacing suggestion is at the end.
 **Concepts:** `import random`, `random.choice`, a `for` loop over the letters of
 a word, building up a string.
 
-**What he writes:**
+**What you write:**
 ```python
 import random
 words = ["python", "rocket", "guitar", "dragon", "planet", "gamer"]
@@ -38,8 +38,8 @@ for letter in secret:
 print(blanks)
 ```
 
-**What he should see:** a row of underscores, a different length each time he
-runs it. Add a temporary `print(secret)` so you can both see the answer while
+**What you should see:** a row of underscores, a different length each time you
+run it. Add a temporary `print(secret)` so you can check your work while
 testing — remove it later.
 
 **Checkpoint question:** "How would we show 8 blanks instead of 6?" (Answer: use
@@ -50,8 +50,8 @@ a longer word — the loop already handles any length.)
 ### Step 2 — Guess letters and reveal them
 **File:** `terminal/build_steps/step2_guessing.py`
 
-**Goal:** the player types a letter; if it's in the word, it appears in place of
-its blank. Keep going until the whole word shows.
+**Goal:** you type a letter; if it's in the word, it appears in place of its
+blank. Keep going until the whole word shows.
 
 **Concepts:** a list to remember guesses (`guessed = []`), `input()`, a `while`
 loop, `if letter in guessed`.
@@ -73,7 +73,7 @@ while True:
     guessed.append(guess)
 ```
 
-**What he should see:** typing a correct letter fills in the blank. (There's no
+**What you should see:** typing a correct letter fills in the blank. (There's no
 "you lose" yet — that's next. There's a simple win check so the loop can stop.)
 
 **Checkpoint question:** "Why do we need the `guessed` list instead of just one
@@ -101,11 +101,11 @@ else:
 ```
 and the loop runs `while wrong < 6:`.
 
-**What he should see:** wrong guesses now count down; six wrong ends the game;
+**What you should see:** wrong guesses now count down; six wrong ends the game;
 completing the word wins it.
 
-**Checkpoint question:** "What happens if he types the same wrong letter twice?"
-(Good moment to show the `elif guess in guessed:` check that prevents it.)
+**Checkpoint question:** "What happens if you type the same wrong letter twice?"
+(Good moment to add the `elif guess in guessed:` check that prevents it.)
 
 ---
 
@@ -132,18 +132,18 @@ while input("Play again? (y/n): ").lower() == "y":
     play()
 ```
 
-**What he should see:** the full game — a drawing that builds up, win/lose
-messages, and the option to replay. **He built a complete game!**
+**What you should see:** the full game — a drawing that builds up, win/lose
+messages, and the option to replay. **A complete game!**
 
 ---
 
 ## Part B — The clickable window (optional upgrade)
 
-Only start this once the terminal game works and he understands it. Sell it as:
-*"Let's put a window on the game you already made."* The guessing logic is
-identical — we're just adding a mouse and some drawing.
+Only start this once the terminal game works and you understand it. Think of it
+as: *"let's put a window on the game you already made."* The guessing logic is
+identical — you're just adding a mouse and some drawing.
 
-**Before game day:** do a 20–30 minute pygame warm-up. Three tiny programs:
+**Before you start:** do a 20–30 minute pygame warm-up. Three tiny programs:
 1. open an empty window,
 2. draw a circle and a line in it,
 3. print a message when the mouse is clicked.
@@ -161,33 +161,32 @@ That way the window, drawing, and clicking aren't brand new during the build.
 3. **Draw the hangman + end screens.** Add `draw_man(wrong)` (lines and a circle
    by coordinates) and the win/lose messages, with a click to play again.
 
-**Teaching tip:** the numbers in `draw_man`, like `(230, 145)`, are just screen
-positions. Tell him *not* to memorize them — instead, change one and re-run to
-watch the head move. That "poke it and see" habit is real programming.
+**Tip:** the numbers in `draw_man`, like `(230, 145)`, are just screen
+positions. Don't try to memorize them — change one and re-run to watch the head
+move. That "poke it and see" habit is real programming.
 
 ---
 
-## Suggested pacing (3 capstone sessions)
+## Suggested pacing (3 sittings)
 
-- **Session 10:** Steps 1 and 2 — a word shows as blanks, and guessing reveals
+- **Sitting 1:** Steps 1 and 2 — a word shows as blanks, and guessing reveals
   letters. Runs after each step.
-- **Session 11:** Step 3 — winning, losing, wrong-guess counting, input checks.
-- **Session 12:** Step 4 — the drawing and play-again (finished terminal game),
-  then play-test and celebrate. If time and energy allow, start Part B.
+- **Sitting 2:** Step 3 — winning, losing, wrong-guess counting, input checks.
+- **Sitting 3:** Step 4 — the drawing and play-again (finished terminal game),
+  then play-test it. If time and energy allow, start Part B.
 
-The window version can be a bonus/stretch across the last session or sent home
-as "want to make it clickable?" homework.
+The window version works well as a bonus across the last sitting, or as a
+"want to make it clickable?" follow-up.
 
 ---
 
-## Stretch goals (if he's flying)
+## Stretch goals (if you're flying)
 
-- **Load words from a file.** Read `words.txt` instead of the hard-coded list —
-  this is a great use of the file-reading he learns in session 9:
+- **Load words from a file.** Read `words.txt` instead of the hard-coded list:
   ```python
   with open("words.txt") as f:
       words = f.read().split()
   ```
 - **Add a score or streak** that goes up each win and resets on a loss.
-- **Add categories** (animals, sports, space) and let him pick one.
+- **Add categories** (animals, sports, space) and let the player pick one.
 - **Give a hint** — reveal one random letter at the start.
