@@ -3,13 +3,53 @@
 A classic word game written in Python, in two versions that play identically:
 a **terminal** game you type into, and a **window** game you click.
 
-The terminal version uses nothing but core Python — variables, lists, loops,
-functions and `random`. The window version takes the exact same guessing logic
-and puts a mouse and a drawing on top of it with `pygame`.
+<p align="center">
+  <img src="docs/images/window-midgame.png" width="620"
+       alt="The Hangman window: the gallows and a partly drawn figure on the left, the word shown as ROCK__ in the middle, and a grid of letter buttons below, green where the letter was in the word and red where it wasn't.">
+</p>
 
-## What it looks like
+## What it is
 
-**Terminal**
+The terminal version is built from core Python only — variables, lists, loops,
+functions and `random` — and draws the hangman with ASCII art. The window
+version takes that exact guessing logic and puts a mouse and a real drawing on
+top of it using `pygame`. Nothing about the rules changes between them; only the
+way you interact with the game does.
+
+The whole thing was built in small runnable stages rather than all at once, and
+each stage is kept in the repository so the path from a twenty-line script to
+the finished game is visible.
+
+## Features
+
+- **A secret word chosen at random** from a built-in list each round.
+- **Letter-by-letter guessing** with the word revealed in place as you get
+  letters right.
+- **Six wrong guesses allowed.** The hangman is drawn one body part at a time,
+  so the picture itself is the countdown.
+- **Input checks** that catch multi-character input and letters you have already
+  tried, without costing you a life.
+- **Win and lose screens**, and the option to play another round.
+- **Colour-coded letter buttons** in the window version: green once a letter
+  turns out to be in the word, red once it doesn't — so the board doubles as a
+  record of everything you have tried.
+
+## The two versions
+
+### The window
+
+Click any of the 26 letter buttons to guess. The gallows and figure are drawn
+with `pygame` line and circle calls, one part per wrong guess. When the round
+ends, the answer is revealed and a click anywhere starts a new one.
+
+<p align="center">
+  <img src="docs/images/window-gameover.png" width="620"
+       alt="The game over screen: the hangman figure fully drawn in red, the message GAME OVER, and the line Word was: ROCKET.">
+</p>
+
+### The terminal
+
+The same game with typed input and an ASCII drawing:
 
 ```
 ==============================
@@ -25,12 +65,6 @@ Word:  _ o c k e t
 Wrong guesses left: 4
 Guess a letter:
 ```
-
-**Window** — the gallows is drawn on the left, the word sits in large blanks in
-the middle, and 26 letter buttons run along the bottom. A button turns green
-when its letter is in the word and red when it isn't, so you can always see what
-you have already tried. Click any letter to guess; when the round ends, click
-anywhere to start a new one.
 
 ## Run it
 
@@ -63,7 +97,8 @@ hangman-python/
 ├── gui/
 │   └── hangman_gui.py        the clickable pygame version
 ├── docs/
-│   └── BUILD_GUIDE.md        the reasoning behind each step
+│   ├── BUILD_GUIDE.md        the reasoning behind each step
+│   └── images/               the screenshots above
 ├── words.txt                 a longer word list
 └── requirements.txt
 ```
